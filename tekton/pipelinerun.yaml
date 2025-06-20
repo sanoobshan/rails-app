@@ -1,16 +1,21 @@
-apiVersion: tekton.dev/v1beta1
+apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  generateName: rails-pipelinerun-
+  name: rails-pipelinerun
 spec:
   pipelineRef:
     name: rails-pipeline
+  params:
+    - name: IMAGE
+      value: sanoobshan/rails-app:latest
   workspaces:
-  - name: shared-workspace
-    volumeClaimTemplate:
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
+    - name: shared-workspace
+      volumeClaimTemplate:
+        metadata:
+          name: shared-workspace-claim
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
