@@ -6,7 +6,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/sanoobshan/private-repo.git
-    path: ./
+    path: k8s/
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc

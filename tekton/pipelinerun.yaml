@@ -21,4 +21,7 @@ spec:
               storage: 1Gi
     - name: dockerconfig
       secret:
-        secretName: dockerhub-secret
+        secretName: regcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
